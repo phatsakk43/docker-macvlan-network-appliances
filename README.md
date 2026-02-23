@@ -1,6 +1,3 @@
-# docker-macvlan-network-appliances
-Documentation and working configs for running network‑appliance containers (like Omada Controller and AdGuard Home) on Docker using MACVLAN with deterministic MAC/IP identity. Includes the systemd shim, boot‑ordering fixes, and the pitfalls I hit transitioning from bridge/host networking to a stable, bare‑metal‑like LAN setup.
-
 # Running Network‑Appliance Containers on Docker Using MACVLAN  
 ### A reproducible pattern with Omada Controller + AdGuard Home as examples
 
@@ -14,7 +11,10 @@ That was the moment I realized something important:
 
 > **Network appliances don’t behave well when forced to share the host’s identity.**
 
-This repo documents the pattern I eventually built to solve that problem: using Docker MACVLAN networks, a systemd‑managed shim interface, and deterministic MAC/IP identity to run network‑appliance containers as first‑class LAN devices—without VMs, without dedicated hardware, and without sacrificing the benefits of Docker.
+This repo documents the pattern I eventually built to solve that problem: using Docker MACVLAN networks, a systemd‑managed shim interface, and deterministic MAC/IP identity to run network‑appliance containers as first‑class LAN devices—without VMs, without dedicated hardware, and without sacrificing the benefits of Docker. 
+
+For a brief overview of Docker networking modes (bridge, host, macvlan, ipvlan, etc.), see  
+[Docker Networking Overview](docs/docker-networking-overview.md).
 
 ---
 
@@ -104,6 +104,7 @@ Do **not** use this pattern for simple apps that only need a port or two. Bridge
 ├── systemd/
 │   └── macvlan-shim.service
 └── docs/
+    ├── docker-networking-overview.md
     ├── what-is-a-network-appliance.md
     ├── why-macvlan.md
     ├── the-shim-and-host-reachability.md
