@@ -107,7 +107,7 @@ Do **not** use this pattern for simple apps that only need a port or two. Bridge
     ├── docker-networking-overview.md
     ├── what-is-a-network-appliance.md
     ├── why-macvlan.md
-    ├── the-shim-and-host-reachability.md
+    ├── macvlan-shims-and-when-to-use-them.md
     ├── boot-order-and-systemd.md
     ├── pitfalls-and-recovery.md
     ├── omada-example.md
