@@ -4,12 +4,6 @@ MACVLAN networking is sensitive to timing. Docker must see the correct network i
 
 To prevent this, the MACVLAN parent interface must be created before Docker starts. This is the purpose of the boot‑ordering shim and the systemd unit that manages it.
 
-# Boot Ordering and systemd
-
-MACVLAN networking is sensitive to timing. Docker must see the correct network interfaces at startup, and Compose must attach containers to a stable, known MACVLAN network. If the MACVLAN parent interface does not exist when Docker starts, Docker may create a ghost network, cache stale network IDs, or assign incorrect MAC/IP identities to containers. These failures are subtle, persistent, and difficult to diagnose after the fact.
-
-To prevent this, the MACVLAN parent interface must be created before Docker starts. This is the purpose of the boot‑ordering shim and the systemd unit that manages it.
-
 This pattern assumes a standard Docker installation where the Docker service lifecycle is managed by systemd. Platforms that wrap Docker inside other orchestration layers (such as Kubernetes‑based systems) may not support this approach.
 
 ---
